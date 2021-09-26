@@ -3,4 +3,6 @@
     <string name="temp">Temp</string>
     <string name="btn_search">Search</string>
     <string name="location_hint">Enter City</string>
+    <string name="days_highs">Today\'s highs of</string>
+    <string name="days_lows">Today\'s lows of</string>
 </resources>

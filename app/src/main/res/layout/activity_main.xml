@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/location_hint"
         android:inputType="textPersonName"
@@ -28,17 +28,17 @@
         android:id="@+id/btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="40dp"
+        android:onClick="getWeatherDetails"
         android:text="@string/btn_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="getWeatherDetails"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_temp"
-        android:layout_width="228dp"
-        android:layout_height="176dp"
+        android:layout_width="235dp"
+        android:layout_height="120dp"
         android:layout_marginStart="21dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="17dp"
@@ -51,13 +51,62 @@
 
     <TextView
         android:id="@+id/tv_weather"
-        android:layout_width="356dp"
-        android:layout_height="310dp"
+        android:layout_width="362dp"
+        android:layout_height="254dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="180dp"
         android:text="TextView"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_lows"
+        android:layout_width="134dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather" />
+
+    <TextView
+        android:id="@+id/tv_highs"
+        android:layout_width="169dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="20dp"
+        android:text="TextView"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weather" />
+
+    <TextView
+        android:id="@+id/tv_low_set_text"
+        android:layout_width="173dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/days_lows"
+        android:textColor="#EF0F0F"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_high_set_text"
+        android:layout_width="156dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/days_highs"
+        android:textSize="20sp"
+        android:textColor="#EF0F0F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

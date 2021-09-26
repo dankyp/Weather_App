@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     EditText et_location;
     TextView tv_temp;
     TextView tv_weather;
+    TextView tv_lows;
+    TextView tv_highs;
+
     private final String url = "https://api.openweathermap.org/data/2.5/weather";
     private final String appid = "b6bd9ab45562773be8872be7a7d95bbc";
     DecimalFormat df = new DecimalFormat("#.##");
@@ -45,13 +48,15 @@ public class MainActivity extends AppCompatActivity {
         et_location = findViewById(R.id.et_location);
         tv_temp = findViewById(R.id.tv_temp);
         tv_weather = findViewById(R.id.tv_weather);
+        tv_lows = findViewById(R.id.tv_lows);
+        tv_highs = findViewById(R.id.tv_highs);
     }
 
     public void getWeatherDetails(View view) {
         String tempUrl = "";
         String city = et_location.getText().toString().trim();
         if (city.equals("")){
-            Toast.makeText(getApplicationContext(),"City required!",Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(),"City required!",Toast.LENGTH_LONG).show();
         } else{
             tempUrl = url + "?q=" + city + "&appid=" + appid + "&units=metric";
         }
@@ -61,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("response", response);
                 String output = "";
                 String degrees = "";
+                String low = "";
+                String high = "";
+
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     JSONArray jsonArray = jsonResponse.getJSONArray("weather");
@@ -76,13 +84,21 @@ public class MainActivity extends AppCompatActivity {
                     tv_temp.setTextColor(Color.RED);
                     degrees += df.format(temp) + "°C";
                     tv_temp.setText(degrees);
-                    tv_weather.setTextColor(Color.RED);
-                    output += "\n Current weather in " + cityName + " (" + countryName + ")"
+                    tv_lows.setTextColor(Color.RED);
+                    low += df.format(temp_min) + "°C";
+                    tv_lows.setText(low);
+                    tv_highs.setTextColor(Color.RED);
+                    high += df.format(temp_max) + "°C";
+                    tv_highs.setText(high);
+                    tv_weather.setTextColor(Color.YELLOW);
+                    output += "\n Current weather in " + cityName
+                            + "\n (" + countryName + ")"
                             + "\n Temp: " + df.format(temp) + " °C"
-                            + "\n with " + description
-                            + "\n Lows today of: " + df.format(temp_min) + " °C"
-                            + "\n Highs today of: " + df.format(temp_max) + " °C";
+                            + "\n with " + description;
+                            //+ "\n Lows today of: " + df.format(temp_min) + " °C"
+                            //+ "\n Highs today of: " + df.format(temp_max) + " °C";
                     tv_weather.setText(output);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
